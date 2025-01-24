@@ -1,0 +1,24 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+h1, h2, h3, h4, h5, h6, p, a, input, textarea, ul{
+    margin: 0;
+    padding: 0;
+}
+
+ul {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+/* Para pantallas pequeñas */
+@media (max-width: 990px) {
+    #cart {
+        margin-top: 1rem; /* Puedes ajustar este valor para controlar el espacio */
+    }
+}
