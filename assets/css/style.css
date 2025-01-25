@@ -1,3 +1,5 @@
+/* Estilos generales */
+
 * {
     margin: 0;
     padding: 0;
@@ -16,7 +18,60 @@ a {
     text-decoration: none;
 }
 
-/* Para pantallas pequeñas */
+/* Título */
+
+#main-title {
+    animation: fadeInDown 1s ease-in-out;
+}
+
+@keyframes fadeInDown {
+    0% {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Cartas productos */
+
+.card {
+    transition: transform 0.3s ease-in-out;
+}
+
+.card:hover {
+    transform: scale(1.05);
+}
+
+.row {
+    margin-bottom: 2rem;
+}
+
+/* Clases activas */
+
+.active {
+    font-weight: bold;
+}
+
+/* Breadcrumb */
+
+.breadcrumb {
+    background-color: #f8f9fa; 
+    border-radius: 0.5rem; 
+    padding: 0.75rem 1rem;
+}
+
+.breadcrumb a {
+    color: black;
+}
+
+.breadcrumb-item.active {
+    color: black;
+}
+
+/* Mediaquery */
 @media (max-width: 990px) {
     #cart {
         margin-top: 1rem; /* Puedes ajustar este valor para controlar el espacio */
