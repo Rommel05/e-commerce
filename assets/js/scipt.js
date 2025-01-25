@@ -8,7 +8,7 @@ $(document).ready(function () {
             let src = img.attr('src');
 
             $('#productModalLabel').text(title);
-            $('#textModalLabel').text(text);
+            $('#priceModalLabel').text(text);
             $('#modalImage').attr('src', src);
         });
     });

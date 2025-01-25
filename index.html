@@ -12,7 +12,7 @@
 </head>
 <body>
     <div id="wrapper">
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark w-100" id="menu">
             <div class="container">
                 <a class="navbar-brand" href="#">
                     QuickTrade
@@ -42,6 +42,11 @@
                         <li class="nav-item">
                             <a class="nav-link" href="#">
                                 <i class="bi bi-person-square"></i> Profile
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                <i class="bi bi-gear-wide"></i> Settings
                             </a>
                         </li>
                     </ul>
@@ -78,7 +83,7 @@
         
         <main class="container" id="main-content">
             <header class="text-center py-5" id="main-title">
-                <h2 class="display-3">
+                <h2 class="display-3 mt-4">
                     <i class="bi bi-bag-fill"></i> QuickTrade
                 </h2>
                 <p class="lead text-muted">Find what you need, all in one place</p>
@@ -207,7 +212,8 @@
                     </div>
                     <div class="modal-body">
                       <img src="" alt="img" class="img-fluid mb-3" id="modalImage">
-                      <p id="textModalLabel">Contenido de la modal</p>
+                      <p id="textModalLabel"></p>
+                      <p id="priceModalLabel"></p>
                     </div>
                     <div class="modal-footer">
                       <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -219,6 +225,148 @@
 
         </main>
     </div>
+
+    <!-- Footer -->
+    <footer class=" text-center text-white" style="background-color:#000000;">
+        
+        <div class="container p-4">
+    
+        
+            <section class="mb-4">
+                <!-- Facebook -->
+                <a class="btn btn-primary btn-floating m-1" style="background-color: #3b5998" href="#" role="button"><i class="bi bi-facebook"></i></a>
+        
+                <!-- Twitter -->
+                <a class="btn btn-primary btn-floating m-1" style="background-color: #55acee" href="#" role="button"><i class="bi bi-twitter-x"></i></a>
+        
+                <!-- Google -->
+                <a class="btn btn-primary btn-floating m-1" style="background-color: #dd4b39" href="#" role="button"><i class="bi bi-google"></i></a>
+        
+                <!-- Instagram -->
+                <a class="btn btn-primary btn-floating m-1" style="background-color: #ac2bac" href="#" role="button"><i class="bi bi-instagram"></i></a>
+        
+                <!-- Linkedin -->
+                <a class="btn btn-primary btn-floating m-1" style="background-color: #0082ca" href="#" role="button"><i class="bi bi-linkedin"></i></a>
+                <!-- Github -->
+                <a class="btn btn-primary btn-floating m-1" style="background-color: #333333" href="https://github.com/Rommel05" role="button"><i class="bi bi-github"></i></a>
+            </section>
+            
+        
+        
+            <section class="section">
+                <form action="">
+
+                <div class="row d-flex justify-content-center">
+                
+                    <div class="col-auto">
+                    <p class="pt-2">
+                        <strong>Sign up for our newsletter</strong>
+                    </p>
+                    </div>
+        
+                    <div class="col-md-5 col-12">
+                    <!-- Email input -->
+                    <div class="form-outline form-white mb-4">
+                        <input type="email" id="form5Example2" class="form-control" />
+                        <label class="form-label" for="form5Example2">Email address</label>
+                    </div>
+                    </div>
+        
+                    <div class="col-auto">
+        
+                    <button type="submit" class="btn btn-outline-light mb-4">
+                        Subscribe
+                    </button>
+                    </div>
+                </div>
+                </form>
+            </section>
+        
+        
+            <section class="mb-4">
+                <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt
+                distinctio earum repellat quaerat voluptatibus placeat nam,
+                commodi optio pariatur est quia magnam eum harum corrupti dicta,
+                aliquam sequi voluptate quas.
+                </p>
+            </section>
+        
+            <section class="">
+                <div class="row">
+                    <div class="col-lg-3 col-md-6 mb-4 mb-md-0 text-start">
+                        <h5 class="text-uppercase">SUPPORT</h5>
+            
+                        <ul class="list-unstyled mb-0">
+                            <li>
+                                <a href="#!" class="text-white">CONTACT</a>
+                            </li>
+                            <li>
+                                <a href="#!" class="text-white">WORK WITH US</a>
+                            </li>
+                            <li>
+                                <a href="#!" class="text-white">CHANGES AND RETURNS</a>
+                            </li>
+                        </ul>
+                    </div>
+            
+                    <div class="col-lg-3 col-md-6 mb-4 mb-md-0 text-start">
+                        <h5 class="text-uppercase">POLICIES</h5>
+            
+                        <ul class="list-unstyled mb-0">
+                            <li>
+                                <a href="#!" class="text-white">RETURN POLICY</a>
+                            </li>
+                            <li>
+                                <a href="#!" class="text-white">PRIVACY POLICY</a>
+                            </li>
+                            <li>
+                                <a href="#!" class="text-white">SHIPPING POLICY</a>
+                            </li>
+                            <li>
+                                <a href="#!" class="text-white">COOKIES</a>
+                            </li>
+                            <li>
+                                <a href="#!" class="text-white">TERMS AND CONDITIONS</a>
+                            </li>
+                        </ul>
+                    </div>        
+                    
+                    <div class="col-lg-3 col-md-6 mb-4 mb-md-0 text-start">
+                        <h5 class="text-uppercase">BRAND</h5>
+            
+                        <ul class="list-unstyled mb-0">
+                            <li>
+                                <a href="#!" class="text-white">STORES</a>
+                            </li>
+                            <li>
+                                <a href="#!" class="text-white">CAREERS</a>
+                            </li>
+                        </ul>
+                    </div>
+                    
+            
+                    <div class="col-lg-3 col-md-6 mb-4 mb-md-0 text-start">
+                        <h5 class="text-uppercase">QUICKTRADE</h5>
+            
+                        <ul class="list-unstyled mb-0">
+                            <li>
+                                <a href="#!" class="text-white">help@quicktrade.com</a>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                </div>
+            </section>
+
+        </div>
+    
+        <div class="text-center p-3">
+            © 2025 Copyright:
+            <a class="text-white" href="https://github.com/Rommel05">github.com/Rommel05</a>
+        </div>
+
+    </footer>
 
     <!-- Scripts de Bootstrap -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
