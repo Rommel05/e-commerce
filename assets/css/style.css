@@ -1,4 +1,4 @@
-/* Estilos generales */
+/* General styles */
 
 * {
     margin: 0;
@@ -18,10 +18,10 @@ a {
     text-decoration: none;
 }
 
-/* Título */
+/* Title */
 
 #main-title {
-    animation: fadeInDown 1s ease-in-out;
+    animation: fadeInDown 2s ease-in-out;
 }
 
 @keyframes fadeInDown {
@@ -35,7 +35,7 @@ a {
     }
 }
 
-/* Cartas productos */
+/* Cards products */
 
 .card {
     transition: transform 0.3s ease-in-out;
@@ -45,11 +45,35 @@ a {
     transform: scale(1.05);
 }
 
+
+/* Cards title */
+
 .row {
+    margin-top: 1.7rem;
     margin-bottom: 2rem;
 }
 
-/* Clases activas */
+.row .title {
+    position: relative;
+}
+
+
+.row .title a {
+    color: black;
+    font-weight: bold;
+    animation: fadeIn 2s ease-out;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+/* Active section */
 
 .active {
     font-weight: bold;
@@ -71,9 +95,22 @@ a {
     color: black;
 }
 
+/* Offcanvas */
+
+/*#offcanvasRight {
+    width: 30rem; 
+}
+
+@media (max-width: 990px) {
+    #offcanvasRight {
+        width: 18rem;
+    }
+}*/
+
+
 /* Mediaquery */
 @media (max-width: 990px) {
     #cart {
-        margin-top: 1rem; /* Puedes ajustar este valor para controlar el espacio */
+        margin-top: 1rem;
     }
 }

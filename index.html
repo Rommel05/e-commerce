@@ -50,13 +50,24 @@
                         </button>
                     </form>
                     <div class="d-flex align-items-center" id="cart">
-                        <a href="#" class="btn btn-outline-light position-relative">
+                        <a href="#" class="btn btn-outline-light position-relative" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
                             <i class="bi bi-cart4"></i> Cart
                             <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
                                 0 <!-- Aquí poner dinámicamente el número de artículos q hay en el carro -->
                                 <span class="visually-hidden">unread items</span>
                             </span>
                         </a>
+
+                        <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+                            <div class="offcanvas-header">
+                              <h5 id="offcanvasRightLabel">Cart</h5>
+                              <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                            </div>
+                            <div class="offcanvas-body">
+                              <p>Cart content</p>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
             </div>
@@ -79,6 +90,11 @@
             </nav>
             
             <div class="row">
+
+                <div class="title text-start py-3">
+                    <a class="display-6">Jacket</a>
+                </div>
+
                 <div class="col-sm-12 col-md-6 col-lg-4 mb-3">
                     <div class="card">
                         <img src="assets/img/abrigos/01.jpg" class="card-img-top" alt="img1">
@@ -109,6 +125,11 @@
             </div>
 
             <div class="row">
+
+                <div class="title text-start py-3">
+                    <a class="display-6">T-shirts</a>
+                </div>
+
                 <div class="col-sm-12 col-md-6 col-lg-4 mb-3">
                     <div class="card">
                         <img src="assets/img/camisetas/01.jpg" class="card-img-top" alt="img1">
@@ -139,6 +160,11 @@
             </div>
 
             <div class="row">
+
+                <div class="title text-start py-3">
+                    <a class="display-6">Trousers</a>
+                </div>
+
                 <div class="col-sm-12 col-md-6 col-lg-4 mb-3">
                     <div class="card">
                         <img src="assets/img/pantalones/01.jpg" class="card-img-top" alt="img1">
