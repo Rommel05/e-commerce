@@ -65,13 +65,14 @@
                             </span>
                         </a>
 
+                        /* Carrito */
                         <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
                             <div class="offcanvas-header">
                               <h5 id="offcanvasRightLabel">Cart</h5>
                               <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                             </div>
                             <div class="offcanvas-body">
-                              <p>Your cart is empty</p>
+                              <p id="empty-text">Your cart is empty</p>
                             </div>
                         </div>
 
@@ -207,12 +208,13 @@
                 <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
                   <div class="modal-content">
                     <div class="modal-header">
-                      <h5 class="modal-title" id="productModalLabel">Producto</h5>
+                      <h5 class="modal-title" id="productModalLabel"></h5>
                       <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
                       <img src="" alt="img" class="img-fluid mb-3" id="modalImage">
-                      <p id="textModalLabel"></p>
+                      <p id="textModalLabel">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae ducimus hic illum voluptas id earum magnam itaque rem soluta labore voluptatem, blanditiis vel sequi praesentium maiores repellat rerum dolores saepe?</p>
+                      <input type="number" id="number" min="1">
                       <p id="priceModalLabel"></p>
                     </div>
                     <div class="modal-footer">

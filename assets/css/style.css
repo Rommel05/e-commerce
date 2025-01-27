@@ -102,6 +102,17 @@ a {
     color: black;
 }
 
+/* Cart styles */
+.cart-product {
+    margin-bottom: 1rem;
+}
+
+.cart-product img {
+    width: 5rem;
+    height: 5rem;
+}
+
+
 /* Offcanvas */
 
 /*#offcanvasRight {
