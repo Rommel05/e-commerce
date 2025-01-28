@@ -10,43 +10,67 @@
 
     <title>Hello, world!</title>
     <style>
-    /*input[type="number"] {
-      width: 150px;
-      padding: 8px;
-      font-size: 16px;
-      border: 2px solid #373838;
-      border-radius: 5px;
-      color: #333;
-      outline: none;
-    }
+    .cart-card {
+    display: flex;
+    align-items: center;
+    border: 0.0625rem solid #ddd;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    margin-bottom: 0.5rem; /* Menor espacio entre tarjetas */
+    max-width: 20rem; /* 540px en rem */
+  }
 
-    input[type="number"]:focus {
-        border-color: #000000; 
-        box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
-    }*/
+  .cart-card img {
+    width: 7.5rem; /* 120px en rem */
+    height: auto;
+    object-fit: cover;
+  }
 
-    /*input[type="number"] {
-    background-color: #f9f9f9;
-    transition: background-color 0.3s ease-in-out;
-    }
+  .cart-card .info {
+    width: 10rem;
+    padding: 0.5rem 0.75rem; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
 
-    input[type="number"]:hover {
-        background-color: #f1f1f1;
-    }
+  .cart-card .info h5 {
+    margin: 0 0 0.25rem 0; 
+    font-size: 1rem; 
+    font-weight: bold;
+  }
 
-    input[type="number"]:focus {
-        background-color: #ffffff;
-    }*/
+  .cart-card .info p {
+    margin: 0.125rem 0; 
+    font-size: 0.8125rem; 
+    color: #555;
+  }
 
-    
+  .cart-card .actions {
+    padding: 0.5rem; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .cart-card .actions button {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    border-radius: 0.25rem;
+    padding: 0.375rem 0.625rem; 
+    cursor: pointer;
+    font-size: 0.8125rem; 
+  }
+
+  .cart-card .actions button:hover {
+    background-color: #bb2d3b;
+  }
   </style>
   </head>
   <body>
-    <h1>Hello, world!</h1>
-    <div data-mdb-input-init class="form-outline" style="width: 22rem;">
-      <input min="10" max="20" type="number" id="typeNumber" class="form-control" />
-      <label class="form-label" for="typeNumber">Number input</label>
-    </div>
+    
+    
 
     <!-- Optional JavaScript; choose one of the two! -->
 
