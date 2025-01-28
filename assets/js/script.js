@@ -37,8 +37,8 @@ $(document).ready(function () {
             <img src="${image}" alt="${title}">
             <div class="info">
                 <h5>${title}</h5>
-                <p>Quantity: ${quantity}</p>
-                <p>Price: ${price}</p>
+                <p class="quantity">Quantity: ${quantity}</p>
+                <p class="price">Price: ${price}</p>
             </div>
             <div class="actions">
                 <button class="btn btn-outline-danger btn-sm remove-item">
@@ -47,19 +47,37 @@ $(document).ready(function () {
             </div>
         </div>`;
         $('.offcanvas-body').append(cardCart);
+
+
+        let counter = parseInt($('#counter').text());
+        counter += parseInt(quantity);
+        $('#counter').text(counter);
+        
     });
 
     /* Borrar del carrito */
-    /*$.each($('.cart-card'), function (indexInArray, valueOfElement) { 
-         $('.remove-item').on('click', function () {
-            valueOfElement.remove();
-         });
-    });*/
-
+    
     $(document).on('click', '.remove-item', function () {
-        $(this).closest('.cart-card').remove(); // Elimina la tarjeta completa
+        $(this).closest('.cart-card').remove();
         if($('.cart-card').length == 0) {
             $('.offcanvas-body').append(`<p id="empty-text">Your cart is empty</p>`);
         }
+
+        
+        
+        let counter = parseInt($('#counter').text());
+        //console.log(counter);
+
+        let quantityText = $(this).closest('.cart-card').find('.info .quantity').text();
+        //console.log(quantityText);
+
+        let quantitySplit = quantityText.split(':');
+        
+        let quantity = parseInt(quantitySplit[1].trim());
+        //console.log(quantity);
+
+        counter -= quantity;
+        $('#counter').text(counter);
+
     });
 });
