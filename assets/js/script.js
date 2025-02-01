@@ -31,6 +31,9 @@ $(document).ready(function () {
         let price = $('#priceModalLabel').text();
         let image = $('#modalImage').attr('src');
         let quantity = $('#number').val();
+        let totalPrice = 0;
+
+        totalPrice = parseInt(price) * quantity;
 
         let cardCart = `
         <div class="cart-card">
@@ -45,9 +48,18 @@ $(document).ready(function () {
                     <i class="bi bi-trash-fill"></i> Eliminar
                 </button>
             </div>
-        </div>`;
-        $('.offcanvas-body').append(cardCart);
 
+        </div>`;
+
+        if ($('#pay').length == 0) {
+            $('#pay-container').append(`<a id="pay" href="#">COMPLETE PURCHASE - $${totalPrice}</a>`);
+        } else {
+            let currentPrice = parseInt($('#pay').text().replace("COMPLETE PURCHASE - $",""));
+            let updatePrice = currentPrice + totalPrice;
+            $('#pay').text(`COMPLETE PURCHASE - $${updatePrice}`);
+        }
+
+        $('#pay').before(cardCart);
 
         let counter = parseInt($('#counter').text());
         counter += parseInt(quantity);
@@ -61,21 +73,44 @@ $(document).ready(function () {
         $(this).closest('.cart-card').remove();
         if($('.cart-card').length == 0) {
             $('.offcanvas-body').append(`<p id="empty-text">Your cart is empty</p>`);
+            $('#pay').remove();
         }
 
-        
-        
-        let counter = parseInt($('#counter').text());
-        //console.log(counter);
+
+        /* Actualizar botón precio */
+
+        let card = $(this).closest('.cart-card');
+
+        /* PRICE */
+
+        let priceText = $(this).closest('.cart-card').find('.info .price').text();
+
+        let priceSplit = priceText.split(":");
+
+        let priceRemove = parseInt(priceSplit[1].trim());
+
+        /* QUANTITY */
 
         let quantityText = $(this).closest('.cart-card').find('.info .quantity').text();
-        //console.log(quantityText);
 
         let quantitySplit = quantityText.split(':');
         
         let quantity = parseInt(quantitySplit[1].trim());
-        //console.log(quantity);
 
+        /*ACTUALIZAR PRICE */
+
+        let currentPrice = parseInt($('#pay').text().replace("COMPLETE PURCHASE - $",""));
+
+        let updatePrice = currentPrice - priceRemove;
+
+        $('#pay').text(`COMPLETE PURCHASE - $${updatePrice}`);
+
+
+
+        
+        /* Actualizar contador de productos */
+
+        let counter = parseInt($('#counter').text());
         counter -= quantity;
         $('#counter').text(counter);
 
