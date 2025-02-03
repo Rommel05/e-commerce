@@ -55,6 +55,7 @@ $(document).ready(function () {
             $('#pay-container').append(`<a id="pay" href="#">COMPLETE PURCHASE - $${totalPrice}</a>`);
         } else {
             let currentPrice = parseInt($('#pay').text().replace("COMPLETE PURCHASE - $",""));
+            //console.log(currentPrice);
             let updatePrice = currentPrice + totalPrice;
             $('#pay').text(`COMPLETE PURCHASE - $${updatePrice}`);
         }
@@ -88,6 +89,7 @@ $(document).ready(function () {
         let priceSplit = priceText.split(":");
 
         let priceRemove = parseInt(priceSplit[1].trim());
+        //console.log(priceRemove);
 
         /* QUANTITY */
 
@@ -96,12 +98,14 @@ $(document).ready(function () {
         let quantitySplit = quantityText.split(':');
         
         let quantity = parseInt(quantitySplit[1].trim());
+        //console.log(quantity);
 
         /*ACTUALIZAR PRICE */
 
         let currentPrice = parseInt($('#pay').text().replace("COMPLETE PURCHASE - $",""));
+        //console.log(currentPrice);
 
-        let updatePrice = currentPrice - priceRemove;
+        let updatePrice = currentPrice - (priceRemove * quantity);
 
         $('#pay').text(`COMPLETE PURCHASE - $${updatePrice}`);
 
