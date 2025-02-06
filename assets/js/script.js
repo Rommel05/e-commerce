@@ -142,21 +142,23 @@ function deleteCart() {
 
 function changeTheme() {
     $('#dark').on('click', function () {
-        $('body').darkWrapper();
+        $('body').darkBody();
         $('#menu').darkNav();
-        $('#search').darkSearch();
-        $('#cartIcon').darkCart();
+        $('#search').darkInput();
+        $('#cartIcon').darkInput();
+        $('#breadcrumb').darkBreadcrumb();
     });
 
     $('#light').on('click', function () {
-        $('body').lightWrapper();
+        $('body').lightBody();
         $('#menu').lightNav();
-        $('#search').lightSearch();
-        $('#cartIcon').lightCart();
+        $('#search').lightInput();
+        $('#cartIcon').lightInput();
+        $('#breadcrumb').lightBreadcrumb();
     });
 }
 
-jQuery.fn.darkWrapper = function() {
+jQuery.fn.darkBody = function() {
     this.each(function() {
         let elem = $(this);
         elem.removeClass('bg-light');
@@ -168,7 +170,7 @@ jQuery.fn.darkWrapper = function() {
     return this
 };
 
-jQuery.fn.lightWrapper = function() {
+jQuery.fn.lightBody = function() {
     this.each(function() {
         let elem = $(this);
         elem.removeClass('bg-secondary');
@@ -179,7 +181,7 @@ jQuery.fn.lightWrapper = function() {
     return this
 };
 
-jQuery.fn.darkSearch = function() {
+jQuery.fn.darkInput = function() {
     this.each(function() {
         let elem = $(this);
         elem.removeClass('btn-outline-light');
@@ -191,7 +193,7 @@ jQuery.fn.darkSearch = function() {
     return this
 };
 
-jQuery.fn.lightSearch = function() {
+jQuery.fn.lightInput = function() {
     this.each(function() {
         let elem = $(this);
         elem.removeClass('btn-outline-dark');
@@ -202,32 +204,6 @@ jQuery.fn.lightSearch = function() {
 
     return this
 };
-
-jQuery.fn.darkCart = function() {
-    this.each(function() {
-        let elem = $(this);
-        elem.removeClass('btn-outline-light');
-        elem.addClass('btn-outline-dark');
-        //elem.css('background','red')
-        
-    })
-
-    return this
-};
-
-jQuery.fn.lightCart = function() {
-    this.each(function() {
-        let elem = $(this);
-        elem.removeClass('btn-outline-dark');
-        elem.addClass('btn-outline-light');
-        //elem.css('background','red')
-        
-    })
-
-    return this
-};
-
-
 
 jQuery.fn.darkNav = function() {
     this.each(function() {
@@ -250,6 +226,30 @@ jQuery.fn.lightNav = function() {
         elem.removeClass('bg-light');
         elem.addClass('navbar-dark');
         elem.addClass('bg-dark');
+        //elem.css('background','red')
+        
+    })
+
+    return this
+};
+
+jQuery.fn.darkBreadcrumb = function() {
+    this.each(function() {
+        let elem = $(this);
+        elem.removeClass('breadcrumb1');
+        elem.addClass('breadcrumb2');
+        //elem.css('background','red')
+        
+    })
+
+    return this
+};
+
+jQuery.fn.lightBreadcrumb = function() {
+    this.each(function() {
+        let elem = $(this);
+        elem.removeClass('breadcrumb2');
+        elem.addClass('breadcrumb1');
         //elem.css('background','red')
         
     })

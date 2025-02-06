@@ -1,6 +1,7 @@
 <?php
     session_start();
-    $conn = mysqli_connect('localhost','root','sa','tiendaPrueba');
+    //$conn = mysqli_connect('localhost','root','sa','tiendaPrueba');
+    $conn = mysqli_connect('localhost','rommel','sa','tiendaPrueba');
     mysqli_query($conn,"SET NAMES 'utf8'");
 
 

@@ -124,8 +124,8 @@
             </header>
 
             <nav aria-label="breadcrumb">
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item active"><a href="index.html">Home</a></li>
+                <ol class="breadcrumb breadcrumb1" id="breadcrumb">
+                    <li class="breadcrumb-item active"><a href="shop.php">Home</a></li>
                     <!--<li class="breadcrumb-item active" aria-current="page">All Products</li>-->
                 </ol>
             </nav>
