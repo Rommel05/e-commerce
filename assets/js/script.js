@@ -2,11 +2,27 @@ $(document).ready(function () {
     //$('body').css('background', 'red');
 
     /* Validación campo number */
-    $('#number').val(1);
-    $('#number').attr('min',1);
+
+    inputQuantity();
 
     /* Añadir dinḿicamente la informaciín del producto a la ventana modal */
 
+    modal();
+
+    /* Añadir al carrito */
+
+    addcart();
+
+    /* Borrar del carrito */
+
+    deleteCart();
+
+    /* Cambiar tema */
+    changeTheme();
+    
+});
+
+function modal() {
     $(document).on('click', '.card', function () {
         let title = $(this).find('.card-title').text();
         let text = $(this).find('.card-text').text();
@@ -18,9 +34,14 @@ $(document).ready(function () {
         $('#priceModalLabel').css('font-weight', 'bold');
         $('#modalImage').attr('src', src);
     });
+}
 
-    /* Añadir al carrito */
+function inputQuantity () { 
+    $('#number').val(1);
+    $('#number').attr('min',1);
+}
 
+function addcart() {
     $('#addCart').on('click', function () {
         //$('#priceModalLabel').html('<p>hola</p>');
         if ($('#empty-text').length != 0) {
@@ -67,18 +88,16 @@ $(document).ready(function () {
         $('#counter').text(counter);
         
     });
+}
 
-    /* Borrar del carrito */
-    
+function deleteCart() {
     $(document).on('click', '.remove-item', function () {
         $(this).closest('.cart-card').remove();
         if($('.cart-card').length == 0) {
             $('.offcanvas-body').append(`<p id="empty-text">Your cart is empty</p>`);
             $('#pay').remove();
         }
-
-
-        /* Actualizar botón precio */
+    
 
         let card = $(this).closest('.cart-card');
 
@@ -119,4 +138,121 @@ $(document).ready(function () {
         $('#counter').text(counter);
 
     });
-});
+}
+
+function changeTheme() {
+    $('#dark').on('click', function () {
+        $('body').darkWrapper();
+        $('#menu').darkNav();
+        $('#search').darkSearch();
+        $('#cartIcon').darkCart();
+    });
+
+    $('#light').on('click', function () {
+        $('body').lightWrapper();
+        $('#menu').lightNav();
+        $('#search').lightSearch();
+        $('#cartIcon').lightCart();
+    });
+}
+
+jQuery.fn.darkWrapper = function() {
+    this.each(function() {
+        let elem = $(this);
+        elem.removeClass('bg-light');
+        elem.addClass('bg-secondary');
+        //elem.css('background','red')
+        
+    })
+
+    return this
+};
+
+jQuery.fn.lightWrapper = function() {
+    this.each(function() {
+        let elem = $(this);
+        elem.removeClass('bg-secondary');
+        elem.addClass('bg-light');
+        //elem.css('background','red')
+    })
+
+    return this
+};
+
+jQuery.fn.darkSearch = function() {
+    this.each(function() {
+        let elem = $(this);
+        elem.removeClass('btn-outline-light');
+        elem.addClass('btn-outline-dark');
+        //elem.css('background','red')
+        
+    })
+
+    return this
+};
+
+jQuery.fn.lightSearch = function() {
+    this.each(function() {
+        let elem = $(this);
+        elem.removeClass('btn-outline-dark');
+        elem.addClass('btn-outline-light');
+        //elem.css('background','red')
+        
+    })
+
+    return this
+};
+
+jQuery.fn.darkCart = function() {
+    this.each(function() {
+        let elem = $(this);
+        elem.removeClass('btn-outline-light');
+        elem.addClass('btn-outline-dark');
+        //elem.css('background','red')
+        
+    })
+
+    return this
+};
+
+jQuery.fn.lightCart = function() {
+    this.each(function() {
+        let elem = $(this);
+        elem.removeClass('btn-outline-dark');
+        elem.addClass('btn-outline-light');
+        //elem.css('background','red')
+        
+    })
+
+    return this
+};
+
+
+
+jQuery.fn.darkNav = function() {
+    this.each(function() {
+        let elem = $(this);
+        elem.removeClass('navbar-dark');
+        elem.removeClass('bg-dark');
+        elem.addClass('navbar-light');
+        elem.addClass('bg-light');
+        //elem.css('background','red')
+        
+    })
+
+    return this
+};
+
+jQuery.fn.lightNav = function() {
+    this.each(function() {
+        let elem = $(this);
+        elem.removeClass('navbar-light');
+        elem.removeClass('bg-light');
+        elem.addClass('navbar-dark');
+        elem.addClass('bg-dark');
+        //elem.css('background','red')
+        
+    })
+
+    return this
+};

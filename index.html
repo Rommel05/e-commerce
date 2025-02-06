@@ -10,9 +10,9 @@
     <link rel="stylesheet" href="assets/css/style.css">
     <script src="assets/js/script.js"></script>
 </head>
-<body>
+<body class='bg-light'> <!--bg-secondary--> <!--bg-light-->
     <div id="wrapper">
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark w-100" id="menu">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark w-100" id="menu"> <!--navbar-light bg-light--> <!--navbar-dark bg-dark-->
             <div class="container">
                 <a class="navbar-brand" href="#">
                     QuickTrade
@@ -28,7 +28,7 @@
                             </a>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 <i class="bi bi-box-seam"></i> Products
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -44,20 +44,29 @@
                                 <i class="bi bi-person-square"></i> Profile
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" id="navbarDropdownSettings" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 <i class="bi bi-gear-wide"></i> Settings
                             </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdownSettings">
+                                <!--<li><a class="dropdown-item" href="#">All products</a></li>-->
+                                <li><p class="dropdown-item" id="light">Light</p></li>
+                                <li><p class="dropdown-item" id="dark">Dark</p></li>
+                            </ul>
+                            
+                            <!--<a class="nav-link">
+                                <i class="bi bi-gear-wide"></i> Settings
+                            </a>-->
                         </li>
                     </ul>
                     <form class="d-flex me-4">
                         <input class="form-control me-2" type="search" placeholder="Search products" aria-label="Search products">
-                        <button type="submit" class="btn btn-outline-light position-relative">
+                        <button type="submit" class="btn btn-outline-light position-relative" id="search"> <!--btn-outline-dark--> <!--btn-outline-light-->
                             <i class="bi bi-search"></i> 
                         </button>
                     </form>
                     <div class="d-flex align-items-center" id="cart">
-                        <a href="#" class="btn btn-outline-light position-relative" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
+                        <a href="#" class="btn btn-outline-light position-relative" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight" id="cartIcon"> <!--btn-outline-dark--> <!--btn-outline-light-->
                             <i class="bi bi-cart4"></i> Cart
                             <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" id="counter">
                                 0 <!-- Aquí poner dinámicamente el número de artículos q hay en el carro -->
