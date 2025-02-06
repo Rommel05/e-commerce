@@ -13,6 +13,7 @@ $name = isset($_POST['name']) ? mysqli_real_escape_string($conn, $_POST['name'])
 $email = isset($_POST['email']) ? mysqli_real_escape_string($conn, trim($_POST['email'])) : null;
 $password = isset($_POST['password']) ? mysqli_real_escape_string($conn, $_POST['password']) : null;
 $description = isset($_POST['description']) ? mysqli_real_escape_string($conn, $_POST['description']) : null;
+$date = isset($_POST['birthdate']) ? mysqli_real_escape_string($conn, $_POST['birthdate']) : null;
 $image = $_FILES['image'] ?? null;
 
 if (isset($image) && $image['error'] == UPLOAD_ERR_OK) {
@@ -55,7 +56,7 @@ if (empty($errors)) {
 
     $secure_password = password_hash($password, PASSWORD_BCRYPT, ['cost' => 10]);
 
-    $insert = "INSERT INTO users (username, description, email, password, image) VALUES ('$name', '$description', '$email','$secure_password', '$nameImage')";
+    $insert = "INSERT INTO users (username, description, birthdate, email, password, image) VALUES ('$name', '$description', '$date','$email','$secure_password', '$nameImage')";
     
     if ($query = mysqli_query($conn, $insert)) {
         /*$_SESSION['name'] = $name;
