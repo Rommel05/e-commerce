@@ -1,0 +1,109 @@
+/* Reset de márgenes y paddings */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Estilos para el body */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f8f9fa;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* Estilos para el contenedor principal */
+main#main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: #fff;
+}
+
+/* Estilos para el header */
+/*header {
+    margin: 0px auto;
+}*/
+
+header h1 {
+    font-size: 3rem;
+    font-weight: bold;
+    color: #000000;
+    margin-bottom: 15px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+header h2 {
+    font-size: 1.5rem;
+    color: #666666;
+    font-weight: normal;
+    margin-top: 0;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+header h1 {
+    font-size: 3rem;
+    font-weight: bold;
+    color: #515253;
+    margin-bottom: 15px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    text-shadow: 0px 0px 0px black, 2px 2px 0px black, 3px 3px 0px black;
+    transition: all 500ms;
+}
+
+header h1:hover {
+    cursor: pointer;
+    text-shadow: 0px 0px 0px black, -2px -2px 0px black, -3px -3px 0px black;
+}
+
+/* Estilos para el contenedor de enlaces */
+#container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+/* Estilos para los enlaces */
+#container a {
+    font-size: 16px;
+    color: #000000;
+    text-decoration: none;
+    padding: 10px 20px;
+    border: 2px solid #000000;
+    border-radius: 5px;
+    width: 200px;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+/* Efecto hover para los enlaces */
+#container a:hover {
+    background-color: #575757;
+    color: white;
+    border-color: #ffffff;
+}
+
+/* Estilos responsive para móviles */
+@media (max-width: 600px) {
+    header h1 {
+        font-size: 2.5rem;
+    }
+
+    header h2 {
+        font-size: 1.2rem;
+    }
+
+    #container a {
+        width: 150px;
+        font-size: 14px;
+    }
+}

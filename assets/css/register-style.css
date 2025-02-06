@@ -1,0 +1,115 @@
+/* Reset de márgenes y paddings */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Estilos para el body */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f8f9fa;
+    color: #333;
+    line-height: 1.6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Estilos para el formulario */
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 350px;
+}
+
+/* Estilos para las etiquetas */
+form label {
+    font-size: 1rem;
+    color: #333;
+    margin-bottom: 5px;
+    align-self: flex-start;
+}
+
+/* Estilos para los campos de entrada */
+form input[type="text"],
+form input[type="email"],
+form input[type="password"],
+form input[type="file"],
+form textarea {
+    font-size: 1rem;
+    padding: 10px;
+    margin-bottom: 15px;
+    width: 100%;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+    transition: border-color 0.3s ease;
+}
+
+/* Efecto foco para inputs y textarea */
+form input[type="text"]:focus,
+form input[type="email"]:focus,
+form input[type="password"]:focus,
+form textarea:focus,
+form input[type="file"]:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+/* Estilo para el textarea */
+form textarea {
+    height: 100px;
+    resize: vertical;
+}
+
+/* Estilo para el botón de submit */
+form input[type="submit"] {
+    font-size: 16px;
+    color: #000000;
+    text-decoration: none;
+    padding: 10px 20px;
+    border: 2px solid #000000;
+    border-radius: 5px;
+    width: 200px;
+    text-align: center;
+    transition: all 0.3s ease;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+form input[type="submit"]:hover {
+    background-color: #575757;
+    color: white;
+    border-color: #ffffff;
+}
+
+/* Estilos responsive para móviles */
+@media (max-width: 600px) {
+    form {
+        width: 90%;
+    }
+
+    form label {
+        font-size: 0.9rem;
+    }
+
+    form input[type="text"],
+    form input[type="email"],
+    form input[type="password"],
+    form input[type="file"],
+    form textarea {
+        font-size: 0.9rem;
+    }
+
+    form input[type="submit"] {
+        font-size: 0.9rem;
+    }
+}

@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QuickTrade</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/smoothness/jquery-ui.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <script src="assets/js/script.js"></script>
+</head>
+<body class='bg-light'> <!--bg-secondary--> <!--bg-light-->
+
+    <?php 
+        if (isset($_SESSION['errors'])) {
+            unset($_SESSION['errors']);
+        }
+
+        if (isset($_SESSION['filled'])) {
+            unset($_SESSION['filled']);
+        }
+        
+        //var_dump($_SESSION) 
+    ?>
+
+    <div id="wrapper">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark w-100" id="menu"> <!--navbar-light bg-light--> <!--navbar-dark bg-dark-->
+            <div class="container">
+                <a class="navbar-brand" href="#">
+                    QuickTrade
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="#">
+                                <i class="bi bi-house-door"></i> Home
+                            </a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="bi bi-box-seam"></i> Products
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <!--<li><a class="dropdown-item" href="#">All products</a></li>-->
+                                <li><a class="dropdown-item" href="#">Jacket</a></li>
+                                <li><a class="dropdown-item" href="#">T-shirts</a></li>
+                                <!--<li><hr class="dropdown-divider"></li>-->
+                                <li><a class="dropdown-item" href="#">Trousers</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" id="navbarDropdownSettings" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="bi bi-gear-wide"></i> Themes
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdownSettings">
+                                <!--<li><a class="dropdown-item" href="#">All products</a></li>-->
+                                <li><p class="dropdown-item" id="light">Theme 1</p></li>
+                                <li><p class="dropdown-item" id="dark">Theme 2</p></li>
+                            </ul>
+                            
+                            <!--<a class="nav-link">
+                                <i class="bi bi-gear-wide"></i> Settings
+                            </a>-->
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="profile.php">
+                                <i class="bi bi-person-square"></i> Profile
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="src/logout.php">
+                                Logout
+                            </a>
+                        </li>
+                    </ul>
+                    <form class="d-flex me-4">
+                        <input class="form-control me-2" type="search" placeholder="Search products" aria-label="Search products">
+                        <button type="submit" class="btn btn-outline-light position-relative" id="search"> <!--btn-outline-dark--> <!--btn-outline-light-->
+                            <i class="bi bi-search"></i> 
+                        </button>
+                    </form>
+                    <div class="d-flex align-items-center" id="cart">
+                        <a href="#" class="btn btn-outline-light position-relative" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight" id="cartIcon"> <!--btn-outline-dark--> <!--btn-outline-light-->
+                            <i class="bi bi-cart4"></i> Cart
+                            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" id="counter">
+                                0 <!-- Aquí poner dinámicamente el número de artículos q hay en el carro -->
+                                <span class="visually-hidden">unread items</span>
+                            </span>
+                        </a>
+
+                        <!--Carrito-->  
+                        <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+                            <div class="offcanvas-header">
+                              <h5 id="offcanvasRightLabel">Cart</h5>
+                              <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                            </div>
+                            <div class="offcanvas-body">
+                              <p id="empty-text">Your cart is empty</p>
+                              <div id="pay-container">
+
+                              </div>
+                              <!--<a href="#" class="hide" id="pay">COMPLETE PURCHASE</a>-->
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </nav>
+        
+        
+        <main class="container" id="main-content">
+            <header class="text-center py-5" id="main-title">
+                <h2 class="display-3 mt-4">
+                    <i class="bi bi-bag-fill"></i> QuickTrade
+                </h2>
+                <p class="lead text-muted">Find what you need, all in one place</p>
+            </header>
+
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item active"><a href="index.html">Home</a></li>
+                    <!--<li class="breadcrumb-item active" aria-current="page">All Products</li>-->
+                </ol>
+            </nav>
+            
+            <div class="row">
+
+                <div class="title text-start py-3">
+                    <a class="display-6">Jacket</a>
+                </div>
+
+                <div class="col-sm-12 col-md-6 col-lg-4 mb-3">
+                    <div class="card" data-bs-toggle="modal" data-bs-target="#modalProduct">
+                        <img src="assets/img/abrigos/01.jpg" class="card-img-top" alt="img1">
+                        <div class="card-body">
+                            <h5 class="card-title">Product 1</h5>
+                            <p class="card-text">1000Є</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-6 col-lg-4 mb-3">
+                    <div class="card" data-bs-toggle="modal" data-bs-target="#modalProduct">
+                        <img src="assets/img/abrigos/02.jpg" class="card-img-top" alt="img1">
+                        <div class="card-body">
+                            <h5 class="card-title">Product 2</h5>
+                            <p class="card-text">2000Є</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-6 col-lg-4 mb-3">
+                    <div class="card" data-bs-toggle="modal" data-bs-target="#modalProduct">
+                        <img src="assets/img/abrigos/03.jpg" class="card-img-top" alt="img1">
+                        <div class="card-body">
+                            <h5 class="card-title">Product 3</h5>
+                            <p class="card-text">3000Є</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+
+                <div class="title text-start py-3">
+                    <a class="display-6">T-shirts</a>
+                </div>
+
+                <div class="col-sm-12 col-md-6 col-lg-4 mb-3">
+                    <div class="card" data-bs-toggle="modal" data-bs-target="#modalProduct">
+                        <img src="assets/img/camisetas/01.jpg" class="card-img-top" alt="img1">
+                        <div class="card-body">
+                            <h5 class="card-title">Product 1</h5>
+                            <p class="card-text">1000Є</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-6 col-lg-4 mb-3">
+                    <div class="card" data-bs-toggle="modal" data-bs-target="#modalProduct">
+                        <img src="assets/img/camisetas/02.jpg" class="card-img-top" alt="img1">
+                        <div class="card-body">
+                            <h5 class="card-title">Product 2</h5>
+                            <p class="card-text">2000Є</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-6 col-lg-4 mb-3">
+                    <div class="card" data-bs-toggle="modal" data-bs-target="#modalProduct">
+                        <img src="assets/img/camisetas/03.jpg" class="card-img-top" alt="img1">
+                        <div class="card-body">
+                            <h5 class="card-title">Product 3</h5>
+                            <p class="card-text">3000Є</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+
+                <div class="title text-start py-3">
+                    <a class="display-6">Trousers</a>
+                </div>
+
+                <div class="col-sm-12 col-md-6 col-lg-4 mb-3">
+                    <div class="card" data-bs-toggle="modal" data-bs-target="#modalProduct">
+                        <img src="assets/img/pantalones/01.jpg" class="card-img-top" alt="img1">
+                        <div class="card-body">
+                            <h5 class="card-title">Product 1</h5>
+                            <p class="card-text">1000Є</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-6 col-lg-4 mb-3">
+                    <div class="card" data-bs-toggle="modal" data-bs-target="#modalProduct">
+                        <img src="assets/img/pantalones/02.jpg" class="card-img-top" alt="img1">
+                        <div class="card-body">
+                            <h5 class="card-title">Product 2</h5>
+                            <p class="card-text">2000Є</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-6 col-lg-4 mb-3">
+                    <div class="card" data-bs-toggle="modal" data-bs-target="#modalProduct">
+                        <img src="assets/img/pantalones/03.jpg" class="card-img-top" alt="img1">
+                        <div class="card-body">
+                            <h5 class="card-title">Product 3</h5>
+                            <p class="card-text">3000Є</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <!--Ventana modal-->
+            <div class="modal fade" id="modalProduct" tabindex="-1" aria-labelledby="modalProductLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="productModalLabel"></h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                      <img src="" alt="img" class="img-fluid mb-3" id="modalImage">
+                      <p id="textModalLabel">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae ducimus hic illum voluptas id earum magnam itaque rem soluta labore voluptatem, blanditiis vel sequi praesentium maiores repellat rerum dolores saepe?</p>
+                      <input type="number" id="number" min="1" value="1">
+                      <p id="priceModalLabel"></p>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                      <button type="button" class="btn btn-primary" data-bs-dismiss="modal" id="addCart">Add cart</button>
+                    </div>
+                  </div>
+                </div>
+            </div>
+
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer class=" text-center text-white" style="background-color:#000000;">
+        
+        <div class="container p-4">
+    
+        
+            <section class="mb-4">
+                <!-- Facebook -->
+                <a class="btn btn-primary btn-floating m-1" style="background-color: #3b5998" href="#" role="button"><i class="bi bi-facebook"></i></a>
+        
+                <!-- Twitter -->
+                <a class="btn btn-primary btn-floating m-1" style="background-color: #55acee" href="#" role="button"><i class="bi bi-twitter-x"></i></a>
+        
+                <!-- Google -->
+                <a class="btn btn-primary btn-floating m-1" style="background-color: #dd4b39" href="#" role="button"><i class="bi bi-google"></i></a>
+        
+                <!-- Instagram -->
+                <a class="btn btn-primary btn-floating m-1" style="background-color: #ac2bac" href="#" role="button"><i class="bi bi-instagram"></i></a>
+        
+                <!-- Linkedin -->
+                <a class="btn btn-primary btn-floating m-1" style="background-color: #0082ca" href="#" role="button"><i class="bi bi-linkedin"></i></a>
+                <!-- Github -->
+                <a class="btn btn-primary btn-floating m-1" style="background-color: #333333" href="https://github.com/Rommel05" role="button"><i class="bi bi-github"></i></a>
+            </section>
+            
+        
+        
+            <section class="section">
+                <form action="">
+
+                <div class="row d-flex justify-content-center">
+                
+                    <div class="col-auto">
+                    <p class="pt-2">
+                        <strong>Sign up for our newsletter</strong>
+                    </p>
+                    </div>
+        
+                    <div class="col-md-5 col-12">
+                    <!-- Email input -->
+                    <div class="form-outline form-white mb-4">
+                        <input type="email" id="form5Example2" class="form-control" />
+                        <label class="form-label" for="form5Example2">Email address</label>
+                    </div>
+                    </div>
+        
+                    <div class="col-auto">
+        
+                    <button type="submit" class="btn btn-outline-light mb-4">
+                        Subscribe
+                    </button>
+                    </div>
+                </div>
+                </form>
+            </section>
+        
+        
+            <section class="mb-4">
+                <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt
+                distinctio earum repellat quaerat voluptatibus placeat nam,
+                commodi optio pariatur est quia magnam eum harum corrupti dicta,
+                aliquam sequi voluptate quas.
+                </p>
+            </section>
+        
+            <section class="">
+                <div class="row">
+                    <div class="col-lg-3 col-md-6 mb-4 mb-md-0 text-start">
+                        <h5 class="text-uppercase">SUPPORT</h5>
+            
+                        <ul class="list-unstyled mb-0">
+                            <li>
+                                <a href="#!" class="text-white">CONTACT</a>
+                            </li>
+                            <li>
+                                <a href="#!" class="text-white">WORK WITH US</a>
+                            </li>
+                            <li>
+                                <a href="#!" class="text-white">CHANGES AND RETURNS</a>
+                            </li>
+                        </ul>
+                    </div>
+            
+                    <div class="col-lg-3 col-md-6 mb-4 mb-md-0 text-start">
+                        <h5 class="text-uppercase">POLICIES</h5>
+            
+                        <ul class="list-unstyled mb-0">
+                            <li>
+                                <a href="#!" class="text-white">RETURN POLICY</a>
+                            </li>
+                            <li>
+                                <a href="#!" class="text-white">PRIVACY POLICY</a>
+                            </li>
+                            <li>
+                                <a href="#!" class="text-white">SHIPPING POLICY</a>
+                            </li>
+                            <li>
+                                <a href="#!" class="text-white">COOKIES</a>
+                            </li>
+                            <li>
+                                <a href="#!" class="text-white">TERMS AND CONDITIONS</a>
+                            </li>
+                        </ul>
+                    </div>        
+                    
+                    <div class="col-lg-3 col-md-6 mb-4 mb-md-0 text-start">
+                        <h5 class="text-uppercase">BRAND</h5>
+            
+                        <ul class="list-unstyled mb-0">
+                            <li>
+                                <a href="#!" class="text-white">STORES</a>
+                            </li>
+                            <li>
+                                <a href="#!" class="text-white">CAREERS</a>
+                            </li>
+                        </ul>
+                    </div>
+                    
+            
+                    <div class="col-lg-3 col-md-6 mb-4 mb-md-0 text-start">
+                        <h5 class="text-uppercase">QUICKTRADE</h5>
+            
+                        <ul class="list-unstyled mb-0">
+                            <li>
+                                <a href="#!" class="text-white">help@quicktrade.com</a>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                </div>
+            </section>
+
+        </div>
+    
+        <div class="text-center p-3">
+            © 2025 Copyright:
+            <a class="text-white" href="https://github.com/Rommel05">github.com/Rommel05</a>
+        </div>
+
+    </footer>
+
+    <!-- Scripts de Bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</body>
+</html>
