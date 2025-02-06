@@ -52,7 +52,7 @@
                 dateFormat: "yy-mm-dd", 
             });
         } );
-  </script>
+    </script>
 
 </body>
 </html>

@@ -11,7 +11,7 @@ $(document).ready(function () {
 
     /* Añadir al carrito */
 
-    addcart();
+    addCart();
 
     /* Borrar del carrito */
 
@@ -41,7 +41,7 @@ function inputQuantity () {
     $('#number').attr('min',1);
 }
 
-function addcart() {
+function addCart() {
     $('#addCart').on('click', function () {
         //$('#priceModalLabel').html('<p>hola</p>');
         if ($('#empty-text').length != 0) {
